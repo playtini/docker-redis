@@ -31,9 +31,16 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.ORG_GITHUB_TOKEN }}
 
-      - name: Build and push
+      - name: Build and push (latest)
         uses: docker/build-push-action@v2
         with:
           push: true
           build-args: IMAGE=bitnami/redis:latest
           tags: ghcr.io/playtini/redis:latest
+       
+      - name: Build and push (6.2.6-debian-10-r120)
+        uses: docker/build-push-action@v2
+        with:
+          push: true
+          build-args: IMAGE=bitnami/redis:6.2.6-debian-10-r120
+          tags: ghcr.io/playtini/redis:6.2.6-debian-10-r120
